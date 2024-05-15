@@ -6,16 +6,6 @@ package com.javarush.task.pro.task11.task1128;
 
 public class Solution {
 
-    public static int num = 0;
-
-    public static void add(int number) {
-        num = number;
-        get();
-    }
-    public void get() {
-        add(num);
-    }
-
     public static void main(String[] args) {
         String numberStr = "147852369";
         for (char symbol : numberStr.toCharArray()) {
