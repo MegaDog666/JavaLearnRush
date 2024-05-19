@@ -1,13 +1,13 @@
 package com.javarush.task.pro.task12.task1210;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /* 
 Переворачивание данных
 */
 
 public class Solution {
-//    public static int[] numbers = new int[10];
     public static ArrayList<Integer> numbers = new ArrayList<Integer>();
 
     public static void main(String[] args) {
