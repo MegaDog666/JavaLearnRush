@@ -1,7 +1,7 @@
 package com.javarush.Algorithms.Final;
 
 import java.util.HashMap;
-public class FourthTask {
+public class FifthTask {
 
     HashMap <String, String[]> nameMap = new HashMap<>();
     HashMap <String, Integer[]> costMap = new HashMap<>();
@@ -31,8 +31,8 @@ public class FourthTask {
         costMap.put("Book", new Integer[] {5, 0});
         costMap.put("Disk", new Integer[] {25, 20});
         costMap.put("BassGuitar", new Integer[] {20});
-        costMap.put("Poster", new Integer[] {30, 35});
-        costMap.put("Drums", new Integer[] {10});
+        costMap.put("Poster", new Integer[] {5, 35});
+        costMap.put("Drums", new Integer[] {-10});
     }
 
     public void Dijkstra(String start, String end) {
@@ -42,11 +42,13 @@ public class FourthTask {
         while (!bestCost.isEmpty()) {
 
             String current = "";
+            String noAsk = "";
             int min = Integer.MAX_VALUE;
             for (var i : bestCost.entrySet()) {
                 if (i.getValue() < min) {
                     min = i.getValue();
                     current = i.getKey();
+                    noAsk = i.getKey();
                 }
             }
             if (current.equals(end)) {
@@ -72,7 +74,7 @@ public class FourthTask {
     }
 
     public static void main(String[] args) {
-        var app = new FourthTask();
+        var app = new FifthTask();
         app.graph();
         app.Dijkstra("Book", "Piano");
         app.printGraph();

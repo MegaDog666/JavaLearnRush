@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class ThirdTask {
 
     int count = 0;
-    static String word = "Казак".toLowerCase().replace(" ", "");
+    static String word = "Аргентина манит негра".toLowerCase().replace(" ", "");
     static String firstHalf = word.substring(0, word.length() / 2);
     static String secondHalf = word.substring(word.length() / 2, word.length());
     HashMap<String, Integer> map = new HashMap<>();

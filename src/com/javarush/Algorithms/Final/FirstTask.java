@@ -75,7 +75,7 @@ public class FirstTask {
         FirstTask graph = new FirstTask();
         graph.addGraph();
         graph.printGraph();
-        graph.Search("A", "H");
+        graph.Search("A", "F");
 //        System.out.println("Кратчайший путь: " + countAttemp);
     }
 }
