@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
-        List<Number> list = new LinkedLi]st<Number>();
+        List<Number> list = new LinkedList<Number>();
         //3
         initList(list);
         //4 - Исправь 2 ошибки
