@@ -14,6 +14,16 @@ public class Solution {
     public static String secondFileName;
 
     //напишите тут ваш код
+    static
+    {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            firstFileName = reader.readLine();
+            secondFileName = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) throws InterruptedException {
         systemOutPrintln(firstFileName);
@@ -24,6 +34,7 @@ public class Solution {
         ReadFileInterface f = new ReadFileThread();
         f.setFileName(fileName);
         f.start();
+        f.join();
         System.out.println(f.getFileContent());
     }
 
@@ -39,4 +50,34 @@ public class Solution {
     }
 
     //напишите тут ваш код
+
+    public static class ReadFileThread extends Thread implements ReadFileInterface {
+
+        private String content = "";
+        private String fileName;
+
+        @Override
+        public void setFileName(String fullFileName)
+        {
+            this.fileName = fullFileName;
+        }
+        @Override
+        public String getFileContent() {
+            if (content != null) {
+                return content;
+            }
+            return "";
+        }
+        public void run() {
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(fileName));
+                while (reader.ready()) {
+                    content += reader.readLine() + " ";
+                }
+                reader.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

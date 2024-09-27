@@ -17,10 +17,10 @@ public class Solution {
         Read3Strings t2 = new Read3Strings();
 
         //add your code here - добавьте код тут
+
         t1.start();
-        t2.start();
-        Thread.sleep(2000);
         t1.join();
+        t2.start();
         t2.join();
         t1.printResult();
         t2.printResult();
@@ -34,6 +34,7 @@ public class Solution {
 
         public void run() {
             String str;
+
             for (int i = 0; i < 3; i++) {
                 try {
                     str = reader.readLine();
@@ -45,7 +46,7 @@ public class Solution {
         }
 
         public void printResult() {
-            System.out.println(Thread.currentThread().getName());
+            System.out.println(list);
         }
     }
 }

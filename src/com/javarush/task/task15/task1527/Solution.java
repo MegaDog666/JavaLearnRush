@@ -3,6 +3,7 @@ package com.javarush.task.task15.task1527;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
 
 /* 
 Парсер реквестов
@@ -12,24 +13,29 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String url = reader.readLine();
-        //напишите тут ваш код
-        try {
-            if (url.contains("?")) {
-                String[] arr = url.split("\\?");
-                String parts[] = arr[1].split("&");
-                for (int i = 0; i < parts.length; i++) {
-                    String[] pair = parts[i].split("=");
-                    if (pair.length == 2) {
-                        if (pair[1].contains(".")) {
-                            alert(Double.parseDouble(pair[1]));
-                        } else {
-                            alert(pair[1]);
-                        }
-                    }
-                }
+        String paramsSubString = url.substring(url.lastIndexOf("?") + 1);
+        String[] splitParams = paramsSubString.split("&");
+        String objValue = null;
+
+        StringBuilder resultBuilder = new StringBuilder();
+        for (String splitParam : splitParams) {
+            String[] paramAndValue = splitParam.split("=");
+            resultBuilder.append(paramAndValue[0]);
+            resultBuilder.append(" ");
+
+            if (paramAndValue[0].equals("obj")) {
+                objValue = paramAndValue[1];
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+
+        System.out.println(resultBuilder.toString().trim());
+
+        if (objValue != null) {
+            try {
+                alert(Double.parseDouble(objValue));
+            } catch (NumberFormatException nfe) {
+                alert(objValue);
+            }
         }
     }
 
