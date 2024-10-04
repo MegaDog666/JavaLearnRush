@@ -11,6 +11,7 @@ import java.util.List;
 */
 
 public class Solution {
+
     public static volatile BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     public static void main(String[] args) throws InterruptedException {
         Read3Strings t1 = new Read3Strings();
@@ -19,8 +20,8 @@ public class Solution {
         //add your code here - добавьте код тут
 
         t1.start();
-        t1.join();
         t2.start();
+        t1.join();
         t2.join();
         t1.printResult();
         t2.printResult();
@@ -29,24 +30,22 @@ public class Solution {
 
     //add your code here - добавьте код тут
     public static class Read3Strings extends Thread {
-
-        public static ArrayList<String> list = new ArrayList<>();
-
+        List<String> list = new ArrayList<>();
         public void run() {
-            String str;
-
-            for (int i = 0; i < 3; i++) {
-                try {
-                    str = reader.readLine();
-                    list.add(str);
-                } catch (IOException e) {
-                    e.printStackTrace();
+            String symbol = "";
+            try {
+                for (int i = 0; i < 3; i++) {
+                    symbol = reader.readLine();
+                    list.add(symbol);
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
         public void printResult() {
-            System.out.println(list);
+            System.out.println(list.get(0) + " " + list.get(1) + " " + list.get(2));
         }
     }
 }
+
